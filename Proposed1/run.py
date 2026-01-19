@@ -20,7 +20,7 @@ import util.misc as misc
 from util.FSC147 import FSC147
 from util.CARPK import CARPK
 from util.ShanghaiTech import ShanghaiTech
-from models import LG_count
+from Proposed1.models import model
 import pytorch_lightning as pl
 from pytorch_lightning import LightningModule, Trainer, seed_everything
 import einops
@@ -137,7 +137,7 @@ class Model(LightningModule):
         self.all_classes = all_classes
 
         self.save_hyperparameters(args)
-        self.model = LG_count.LGCount(
+        self.model = model.Proposed1Count(
             fim_depth=self.args.decoder_depth,
             fim_num_heads=self.args.decoder_head,
             use_coop=self.args.use_coop,
@@ -151,7 +151,7 @@ class Model(LightningModule):
             unfreeze_vit=self.args.unfreeze_vit,
             contrast_pre_epoch=self.args.contrast_pre_epoch,
         )
-        self.model_align = LG_count.LGCountAlign(
+        self.model_align = model.Proposed1CountAlign(
             fim_depth=self.args.decoder_depth,
             fim_num_heads=self.args.decoder_head,
             use_coop=self.args.use_coop,

@@ -86,8 +86,7 @@ def _load_stage1_heads_into(ffn: ImageFFN, adapter: TextAdapter, ckpt_path: str,
     adapter.eval()
 
 
-
-class LGCount(nn.Module):
+class Proposed1Count(nn.Module):
     def __init__(self, fim_depth: int = 4,
                  fim_num_heads: int = 8,
                  mlp_ratio: float = 4.,
@@ -103,7 +102,6 @@ class LGCount(nn.Module):
                  unfreeze_vit: bool = False,
                  contrast_pre_epoch: int = 20):
         """
-        The LGCount model
         Param:
             fim_depth: the number of blocks for the patch-text interaction module, only useful for naive ViT.
             fim_num_heads: the number of heads for the patch-text interaction module.
@@ -405,7 +403,7 @@ class LGCount(nn.Module):
         return top_indices, sim_map, pred_density
 
 
-class LGCountAlign(nn.Module):
+class Proposed1CountAlign(nn.Module):
     def __init__(self, fim_depth: int = 4,
                  fim_num_heads: int = 8,
                  mlp_ratio: float = 4.,
@@ -757,4 +755,4 @@ class DensityDecoder(nn.Module):
 
 
 if __name__ == "__main__":
-    LG_count = LGCount()
+    Proposed1Count = Proposed1Count()
